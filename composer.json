@@ -1,0 +1,43 @@
+{
+  "name": "nilportugues/php_forbidden",
+  "type": "library",
+  "description": "Looks into the code using a user-defined list of forbidden function in a given path.",
+  "keywords": [
+    "php",
+    "fixer",
+    "function",
+    "checker",
+    "functions",
+    "forbidden"
+  ],
+  "homepage": "http://nilportugues.com",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nil Portugués Calderó",
+      "email": "contact@nilportugues.com",
+      "role": "Project Lead Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.4",
+    "symfony/console": "~2.2",
+    "phpunit/phpunit": "^5.0"
+  },
+  "require-dev": {
+    "fabpot/php-cs-fixer": "1.4.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "NilPortugues\\ForbiddenFunctions\\": "src/ForbiddenFunctions/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "NilPortugues\\Tests\\ForbiddenFunctions\\": "tests/"
+    }
+  },
+  "bin": [
+    "bin/php_forbidden"
+  ]
+}
