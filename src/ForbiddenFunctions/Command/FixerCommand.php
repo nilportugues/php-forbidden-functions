@@ -59,11 +59,11 @@ class FixerCommand extends Command
 
             if (!empty($this->errors)) {
                 $output->writeln("\nForbidden functions were found:\n");
-                \print_r($this->errors);
-
-                return 1;
+                foreach($this->errors as $file => $line) {
+                    $output->writeln(sprintf("%s: %s", $file, $line));
+                }
+                return $output;
             }
-
             return $output->writeln("\nCongratulations! No forbidden functions found.\n");
         }
 
