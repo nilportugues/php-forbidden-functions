@@ -1,3 +1,5 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nilportugues/php_forbidden_functions/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nilportugues/php_forbidden_functions/?branch=master) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/ba34c91a-4ee4-4b0d-8c7c-8ad3019a6fcc/mini.png)](https://insight.sensiolabs.com/projects/ba34c91a-4ee4-4b0d-8c7c-8ad3019a6fcc) [![Latest Stable Version](https://poser.pugx.org/nilportugues/php_forbidden/v/stable)](https://packagist.org/packages/nilportugues/php_forbidden_functions) [![Total Downloads](https://poser.pugx.org/nilportugues/php_forbidden/downloads)](https://packagist.org/packages/nilportugues/php_forbidden_functions) [![License](https://poser.pugx.org/nilportugues/php_forbidden/license)](https://packagist.org/packages/nilportugues/php_forbidden_functions)
+
 
 # PHP Forbidden Functions
 
