@@ -2,7 +2,6 @@
 
 namespace NilPortugues\ForbiddenFunctions\Fixer;
 
-
 use InvalidArgumentException;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -35,12 +34,5 @@ class FileSystem implements \NilPortugues\ForbiddenFunctions\Fixer\Interfaces\Fi
         }
 
         return $files;
-    }
-    /**
-     * @inheritDoc
-     */
-    public function writeFile($filePath, $fileContent)
-    {
-        \file_put_contents($filePath, $fileContent);
     }
 }

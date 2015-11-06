@@ -15,12 +15,32 @@ $ composer require nilportugues/php_forbidden
 
 ## Usage
 
+It is really this simple:
+
 ```
 $ php bin/php_forbidden check <path/to/directory>
 ```
 
-###Output
+### Configuration file
 
+When run the first time, if no `php_forbidden_function.yml` file is found, it will be generated.
+
+A configuration for instance, should formatted as follows:
+
+```yml
+forbidden:
+  - file_get_contents
+  - fopen
+  - die
+  - var_dump
+  - print_r
+```
+
+You can specify an alternate location for the configuration file by passing in the `-c` parameter. Example:
+
+```
+$  php bin/php_forbidden check -c configs/php_forbidden_function.yml src/
+```
 
 ## Contribute
 

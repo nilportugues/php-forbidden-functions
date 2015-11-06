@@ -1,6 +1,2 @@
+---
 forbidden:
-  - file_get_contents
-  - fopen
-  - die
-  - var_dump
-  - print_r
