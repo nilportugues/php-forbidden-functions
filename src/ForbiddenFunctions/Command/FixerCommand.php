@@ -52,6 +52,7 @@ class FixerCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $path = $input->getArgument('check');
+        $realPath = realpath($path);
         $configFile = $input->getOption('config');
 
         if (file_exists($configFile)) {
@@ -59,9 +60,12 @@ class FixerCommand extends Command
 
             if (!empty($this->errors)) {
                 $output->writeln("\nForbidden functions were found:\n");
-                foreach($this->errors as $file => $line) {
-                    $output->writeln(sprintf("%s: %s", $file, $line));
+                foreach($this->errors as $file => $lines) {
+                    foreach($lines as $line) {
+                        $output->writeln(sprintf(" - .%s: %s", str_replace($realPath, '', $file), $line));
+                    }
                 }
+                $output->writeln('');
                 return $output;
             }
             return $output->writeln("\nCongratulations! No forbidden functions found.\n");
