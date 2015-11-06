@@ -66,7 +66,7 @@ class FixerCommand extends Command
                     }
                 }
                 $output->writeln('');
-                return $output;
+                throw new \Exception('Fix your code');
             }
             return $output->writeln("\nCongratulations! No forbidden functions found.\n");
         }
