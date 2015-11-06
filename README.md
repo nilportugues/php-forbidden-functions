@@ -50,14 +50,12 @@ Contributions to the package are always welcome!
 * You can grab the source code at the package's [Git repository](https://github.com/nilportugues/php_forbidden_functions).
 
 
-
 ## Support
 
 Get in touch with me using one of the following means:
 
  - Emailing me at <contact@nilportugues.com>
  - Opening an [Issue](https://github.com/nilportugues/php_forbidden_functions/issues/new)
-
 
 
 ## Authors
