@@ -4,7 +4,7 @@ namespace NilPortugues\ForbiddenFunctions\Command;
 
 use NilPortugues\ForbiddenFunctions\Command\Exceptions\ConfigFileException;
 use NilPortugues\ForbiddenFunctions\Command\Exceptions\RuntimeException;
-use NilPortugues\ForbiddenFunctions\Fixer\FileSystem;
+use NilPortugues\ForbiddenFunctions\Checker\FileSystem;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -12,7 +12,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Yaml\Yaml;
 
-class FixerCommand extends Command
+class CheckCommand extends Command
 {
     const COMMAND_NAME = 'check';
     const CONFIG_FILE = 'php_forbidden_function.yml';

@@ -1,12 +1,12 @@
 <?php
 
-namespace NilPortugues\ForbiddenFunctions\Fixer;
+namespace NilPortugues\ForbiddenFunctions\Checker;
 
 use InvalidArgumentException;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
-class FileSystem implements \NilPortugues\ForbiddenFunctions\Fixer\Interfaces\FileSystem
+class FileSystem implements \NilPortugues\ForbiddenFunctions\Checker\Interfaces\FileSystem
 {
     /**
      * @inheritDoc

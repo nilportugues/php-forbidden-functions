@@ -1,6 +1,6 @@
 <?php
 
-namespace NilPortugues\ForbiddenFunctions\Fixer\Interfaces;
+namespace NilPortugues\ForbiddenFunctions\Checker\Interfaces;
 
 interface FileSystem
 {

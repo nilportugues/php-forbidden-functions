@@ -3,7 +3,7 @@
 
 namespace NilPortugues\ForbiddenFunctions\Console;
 
-use NilPortugues\ForbiddenFunctions\Command\FixerCommand;
+use NilPortugues\ForbiddenFunctions\Command\CheckCommand;
 
 class Application extends \Symfony\Component\Console\Application
 {
@@ -29,7 +29,7 @@ NAME;
     protected function getDefaultCommands()
     {
         $commands = parent::getDefaultCommands();
-        $commands[] = new FixerCommand();
+        $commands[] = new CheckCommand();
 
         return $commands;
     }
