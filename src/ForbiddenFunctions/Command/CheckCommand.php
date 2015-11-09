@@ -105,24 +105,33 @@ class CheckCommand extends Command
         foreach ($fileSystem->getFilesFromPath($path) as $file) {
             $tokens = token_get_all(file_get_contents($file));
             foreach($tokens as $token) {
-                if(is_array($token) && count($token) === 3) {
-                    $type = $token[0];
-                    $code = $token[1];
-                    $lineNumber = $token[2];
+                $this->scanForForbiddenFunctions($configFile, $token, $file);
+            }
+        }
+    }
 
-                    if (false === in_array($type, [T_COMMENT, T_DOC_COMMENT], true)) {
-                        foreach ($this->getForbiddenFunctions($configFile) as $function) {
-                            if (\false !== \strpos($code, $function)) {
-                                $this->errors[$file][] = \sprintf(
-                                    'Forbidden function \'%s\' found on line %s.',
-                                    $function,
-                                    $lineNumber
-                                );
-                            }
-                        }
+    /**
+     * @param $configFile
+     * @param $token
+     * @param $file
+     */
+    protected function scanForForbiddenFunctions($configFile, $token, $file)
+    {
+        if (is_array($token) && count($token) === 3) {
+            $type = $token[0];
+            $code = $token[1];
+            $lineNumber = $token[2];
+
+            if (\false === in_array($type, [T_COMMENT, T_DOC_COMMENT], \true)) {
+                foreach ($this->getForbiddenFunctions($configFile) as $function) {
+                    if (\strtolower($code) === \strtolower($function)) {
+                        $this->errors[$file][] = \sprintf(
+                            'Forbidden function \'%s\' found on line %s.',
+                            $function,
+                            $lineNumber
+                        );
                     }
                 }
-
             }
         }
     }
