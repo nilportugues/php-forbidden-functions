@@ -1,5 +1,4 @@
 <?php
-
 $composer1 = __DIR__.'/../vendor/autoload.php';
 $composer2 = __DIR__.'/../../../autoload.php';
 
