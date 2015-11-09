@@ -4,6 +4,8 @@
   "description": "Looks into the code using a user-defined list of forbidden function in a given path.",
   "keywords": [
     "php",
+    "git",
+    "hook",    
     "fixer",
     "function",
     "checker",
