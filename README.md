@@ -12,7 +12,7 @@ Typical examples are `print_r`, `var_dump`, `exit` and `die` function calls.
 Use [Composer](https://getcomposer.org) to install the package:
 
 ```
-$ composer require nilportugues/php_forbidden
+$ composer require --dev nilportugues/php_forbidden
 ```
 
 ## Usage
