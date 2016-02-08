@@ -25,7 +25,6 @@ class CheckStdin extends CheckTarget
     public function __construct()
     {
         $this->source = file_get_contents('php://STDIN');
-        var_dump($this->source);
     }
 
     /**
