@@ -69,6 +69,7 @@ class CheckCommand extends Command
                 $output->writeln('');
                 throw new \Exception('Fix your code');
             }
+
             return $output->writeln("\nCongratulations! No forbidden functions found.\n");
         }
 
@@ -92,16 +93,15 @@ class CheckCommand extends Command
         }
         self::$forbiddenFunctions = (array) $functions['forbidden'];
 
-
         return self::$forbiddenFunctions;
     }
 
     /**
      * Check given source code for forbidden functions.
      *
-     * @param string $source Source code to be checked.
+     * @param string $source     Source code to be checked.
      * @param string $configFile Configuration file path.
-     * @param string $file Source file path.
+     * @param string $file       Source file path.
      */
     protected function scan($source, $configFile, $file)
     {

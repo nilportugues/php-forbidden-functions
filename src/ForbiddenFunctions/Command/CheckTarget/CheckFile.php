@@ -16,7 +16,7 @@ class CheckFile extends CheckTarget
     protected $path = '';
 
     /**
-     * @param string $path Absolute path of the file to be checked.
+     * @param  string    $path Absolute path of the file to be checked.
      * @return CheckFile Target of type file.
      */
     public function __construct($path)
@@ -37,6 +37,6 @@ class CheckFile extends CheckTarget
      */
     public function getFileReference($file)
     {
-        return './' . basename($file);
+        return './'.basename($file);
     }
 }

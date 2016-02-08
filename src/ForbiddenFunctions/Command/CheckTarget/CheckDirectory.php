@@ -18,7 +18,7 @@ class CheckDirectory extends CheckTarget
     protected $path = '';
 
     /**
-     * @param string $path Absolute path of the directory to be checked.
+     * @param  string         $path Absolute path of the directory to be checked.
      * @return CheckDirectory Target of type directory.
      */
     public function __construct($path)
@@ -42,6 +42,6 @@ class CheckDirectory extends CheckTarget
      */
     public function getFileReference($file)
     {
-        return '.' . str_replace($this->path, '', $file);
+        return '.'.str_replace($this->path, '', $file);
     }
 }

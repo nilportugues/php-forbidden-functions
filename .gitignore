@@ -3,3 +3,5 @@
 /build_test
 .php_cs.cache
 php_forbidden_function.yml
+/bin/
+/build/
