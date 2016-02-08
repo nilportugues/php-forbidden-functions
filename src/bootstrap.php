@@ -11,4 +11,3 @@ if ($autoload1 === \false && $autoload2 === \false) {
         'php composer.phar install'.\PHP_EOL;
     return;
 }
-

@@ -23,6 +23,25 @@ It is really this simple:
 $ php bin/php_forbidden check <path/to/directory>
 ```
 
+```
+$ php bin/php_forbidden check <path/to/file>
+```
+
+You can also pipe STDIN in, if you want to use this tool with Gulp for instance:
+
+```
+$ cat <path/to/file> | php bin/php_forbidden check
+```
+
+which means that this also works writing code directly from the shell (if you have some reason to do it):
+
+```
+$ php bin/php_forbidden check
+<?php
+// Insert your code
+// and press CTRL+D to send EOF
+```
+
 ### Configuration file
 
 When run the first time, if no `php_forbidden_function.yml` file is found, it will be generated.

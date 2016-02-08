@@ -4,7 +4,7 @@ namespace NilPortugues\ForbiddenFunctions\Command;
 
 use NilPortugues\ForbiddenFunctions\Command\Exceptions\ConfigFileException;
 use NilPortugues\ForbiddenFunctions\Command\Exceptions\RuntimeException;
-use NilPortugues\ForbiddenFunctions\Checker\FileSystem;
+use NilPortugues\ForbiddenFunctions\Command\CheckTarget\CheckTarget;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -35,7 +35,7 @@ class CheckCommand extends Command
         $this
             ->setName(self::COMMAND_NAME)
             ->setDescription('Looks into the code using a user-defined list of forbidden function in a given path.')
-            ->addArgument('check', InputArgument::REQUIRED, 'File Path')
+            ->addArgument('check', InputArgument::OPTIONAL, 'File Path')
             ->addOption('config', '-c', InputOption::VALUE_OPTIONAL, 'Config File', self::CONFIG_FILE);
     }
 
@@ -51,18 +51,19 @@ class CheckCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $path = $input->getArgument('check');
-        $realPath = realpath($path);
+        $checkTarget = CheckTarget::create($input->getArgument('check'));
         $configFile = $input->getOption('config');
 
         if (file_exists($configFile)) {
-            $this->scanFiles($path, $configFile);
+            $checkTarget->scan(function ($source, $file) use ($configFile) {
+                $this->scan($source, $configFile, $file);
+            });
 
             if (!empty($this->errors)) {
                 $output->writeln("\nForbidden functions were found:\n");
-                foreach($this->errors as $file => $lines) {
-                    foreach($lines as $line) {
-                        $output->writeln(sprintf(" - .%s: %s", str_replace($realPath, '', $file), $line));
+                foreach ($this->errors as $file => $lines) {
+                    foreach ($lines as $line) {
+                        $output->writeln(sprintf(" - %s: %s", $checkTarget->getFileReference($file), $line));
                     }
                 }
                 $output->writeln('');
@@ -96,17 +97,17 @@ class CheckCommand extends Command
     }
 
     /**
-     * @param $path
-     * @param $configFile
+     * Check given source code for forbidden functions.
+     *
+     * @param string $source Source code to be checked.
+     * @param string $configFile Configuration file path.
+     * @param string $file Source file path.
      */
-    protected function scanFiles($path, $configFile)
+    protected function scan($source, $configFile, $file)
     {
-        $fileSystem = new FileSystem();
-        foreach ($fileSystem->getFilesFromPath($path) as $file) {
-            $tokens = token_get_all(file_get_contents($file));
-            foreach($tokens as $token) {
-                $this->scanForForbiddenFunctions($configFile, $token, $file);
-            }
+        $tokens = token_get_all($source);
+        foreach ($tokens as $token) {
+            $this->scanForForbiddenFunctions($configFile, $token, $file);
         }
     }
 
